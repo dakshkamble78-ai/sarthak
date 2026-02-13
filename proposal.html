@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sarthak ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
+body{
+height:100vh;
+overflow:hidden;
+background:black;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* Background Video */
+video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+filter:brightness(0.35);
+}
+
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(to top,rgba(0,0,0,0.9),rgba(0,0,0,0.4));
+z-index:-1;
+}
+
+/* Lock Screen */
+#lock{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:black;
+z-index:10;
+}
+
+input{
+padding:12px 20px;
+border-radius:30px;
+border:none;
+margin-top:15px;
+text-align:center;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff004f;
+color:white;
+margin-top:15px;
+cursor:pointer;
+}
+
+/* Main Card */
+.card{
+display:none;
+text-align:center;
+max-width:350px;
+padding:25px;
+backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.08);
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,0,80,0.6);
+animation:fadeIn 2s forwards;
+}
+
+.card img{
+width:200px;
+border-radius:20px;
+margin-top:20px;
+box-shadow:0 0 30px #ff004f;
+animation:zoom 6s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.05);}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* Ring Entrance */
+.ring{
+font-size:70px;
+animation:ringEntrance 3s ease forwards;
+}
+
+@keyframes ringEntrance{
+0%{transform:translateY(-200px) scale(0); opacity:0;}
+50%{transform:translateY(0) scale(1.3);}
+100%{transform:scale(1);}
+}
+
+/* Fireworks Continuous */
+.firework{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:explode 1s linear forwards;
+}
+
+@keyframes explode{
+0%{opacity:1;}
+100%{transform:translate(var(--x),var(--y)); opacity:0;}
+}
+
+/* Rose Petals */
+.petal{
+position:absolute;
+color:#ff004f;
+font-size:18px;
+animation:fall 8s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh) rotate(0);}
+100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+#text{
+margin-top:15px;
+font-size:16px;
+min-height:100px;
+}
+
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop>
+<source src="romantic.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div id="lock">
+<h2>Enter Password ❤️</h2>
+<input type="password" id="pass" placeholder="Hint: His Name">
+<button onclick="unlock()">Unlock</button>
+</div>
+
+<div class="card" id="main">
+<div class="ring">💍</div>
+<h2>Sarthak ❤️</h2>
+<div id="text"></div>
+<img src="sarthak.jpg">
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function unlock(){
+let p=document.getElementById("pass").value;
+if(p.toLowerCase()==="sarthak"){
+document.getElementById("lock").style.display="none";
+document.getElementById("main").style.display="block";
+typeText();
+setInterval(createFirework,400);
+setInterval(createPetal,500);
+}
+else{alert("Wrong Password ❤️");}
+}
+
+/* Romantic Text */
+let msg="Sarthak… you walked into my life quietly, but you changed everything loudly. You became my comfort, my happiness, my peace, and my forever feeling. I don't need a perfect love story… because with you, every chapter already feels magical. This ring is not a question. It is a promise — that my heart has already chosen you. Always. ❤️";
+let i=0;
+function typeText(){
+if(i<msg.length){
+document.getElementById("text").innerHTML+=msg.charAt(i);
+i++;
+setTimeout(typeText,35);
+}
+}
+
+/* Fireworks */
+function createFirework(){
+for(let i=0;i<20;i++){
+let fw=document.createElement("div");
+fw.className="firework";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+fw.style.setProperty('--x',(Math.random()*200-100)+"px");
+fw.style.setProperty('--y',(Math.random()*200-100)+"px");
+document.body.appendChild(fw);
+setTimeout(()=>fw.remove(),1000);
+}
+}
+
+/* Petals */
+function createPetal(){
+let p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌹";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(Math.random()*5+5)+"s";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),8000);
+}
+
+</script>
+
+</body>
+</html>
