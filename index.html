@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Sarthak ❤️</title>
+<title>For Atharva ❤️</title>
 
 <style>
 *{
@@ -141,6 +141,17 @@ font-size:16px;
 min-height:100px;
 }
 
+/* Glowing Name Animation */
+.name-glow{
+font-size:24px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #ff004f;}
+to{text-shadow:0 0 25px #ff004f;}
+}
+
 </style>
 </head>
 
@@ -156,14 +167,14 @@ min-height:100px;
 <!-- 🔒 Lock Screen -->
 <div id="lock">
 <h2>Enter Password ❤️</h2>
-<input type="password" id="pass" placeholder="Hint: His Name">
+<input type="password" id="pass" placeholder="Hint: Atharva">
 <button onclick="unlock()">Unlock</button>
 </div>
 
 <!-- 💖 Main Card -->
 <div class="card" id="main">
 <div class="ring">💍</div>
-<h2>Sarthak ❤️</h2>
+<h2 class="name-glow">Atharva ❤️</h2>
 <div id="text"></div>
 <img src="sarthak.jpg" id="photo">
 </div>
@@ -178,7 +189,7 @@ min-height:100px;
 function unlock(){
 let p=document.getElementById("pass").value;
 
-if(p.toLowerCase()==="sarthak"){
+if(p.toLowerCase()==="atharva"){
 
 // Fade lock screen
 document.getElementById("lock").style.opacity="0";
@@ -197,7 +208,7 @@ document.getElementById("photo").classList.add("show-img");
 // Start music
 document.getElementById("music").play();
 
-// Brighten video slightly
+// Slight brightness boost
 document.getElementById("bgVideo").style.filter="brightness(0.6)";
 
 typeText();
@@ -208,7 +219,7 @@ alert("Wrong Password ❤️");
 }
 
 /* Romantic Typing Effect */
-let msg="Sarthak… you walked into my life quietly, but you changed everything loudly. You became my comfort, my happiness, my peace, and my forever feeling. This ring is not a question. It is a promise — that my heart has already chosen you. Always. ❤️";
+let msg="Atharva… you walked into my life quietly, but you changed everything loudly. You became my comfort, my happiness, my peace, and my forever feeling. This ring is not a question. It is a promise — that my heart has already chosen you. Always. ❤️";
 
 let i=0;
 function typeText(){
